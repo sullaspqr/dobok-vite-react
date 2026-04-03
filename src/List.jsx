@@ -3,14 +3,14 @@ import { NavLink } from 'react-router-dom'
 import axios from 'axios'
 
 export const List = () => {
-    const [hangszerek, setHangszerek] = useState([])
+    const [dobok, setDobok] = useState([])
     const [isFetchPending, setFetchPending] = useState(false);
 
     useEffect(() => {
         setFetchPending(true);
-        axios.get('http://localhost:3001/instruments')
+        axios.get('http://localhost:3001/drums')
         .then(response => {
-            setHangszerek(response.data);
+            setDobok(response.data);
             setFetchPending(false);
         })
         .catch(error => {
@@ -29,14 +29,14 @@ export const List = () => {
             <div className="container"> {/* Bootstrap középre igazított tartalom, fix szélességi töréspontokkal */}
 
   <h2 className="mb-4"> {/* mb-4 = margin-bottom 4 egység (kb 1.5rem) */}
-    Hangszerek
+   Dobok
   </h2>
 
   <div className="row g-4"> 
     {/* row = Bootstrap grid sor */}
     {/* g-4 = gap (térköz) az oszlopok között, 4-es méret */}
     
-    {hangszerek.map((hangszer, index) => (
+    {dobokk.map((dob, index) => (
       
       <div className="col-12 col-sm-6 col-md-4 col-lg-3" key={index}>
         {/* col-12 = mobilon teljes szélesség (1 kártya/sor) */}
@@ -48,13 +48,8 @@ export const List = () => {
           {/* card = Bootstrap kártya komponens */}
           {/* h-100 = magasság 100%, minden kártya egyforma magas */}
           {/* shadow-sm = kis árnyék a kártya alatt */}
-        <NavLink to={"/single/" + hangszer.id}>
-          <img
-            src={hangszer.imageURL}
-            className="card-img-top p-3"
-            alt="hangszer"
-            style={{ height: "200px", objectFit: "contain" }}
-          /></NavLink>
+        <NavLink to={"/single/" + dob.id}>
+          Egy dob részletei </NavLink>
           {/* card-img-top = kép a kártya tetején */}
           {/* p-3 = padding minden oldalon (kb 1rem) */}
           {/* objectFit: contain = kép torzítás nélkül belefér */}
@@ -63,21 +58,21 @@ export const List = () => {
             {/* card-body = kártya tartalom része, automatikus padding */}
 
             <h6 className="card-title">
-              {hangszer.name}
+              {dob.name}
             </h6>
             {/* card-title = kártya cím stílus */}
 
             <p className="card-text">
-              Márka: <b>{hangszer.brand}</b>
+              Márka: <b>{dob.brand}</b>
             </p>
             {/* card-text = kártya szöveg formázás */}
 
             <p className="card-text">
-              Ár: <b>{hangszer.price} Ft</b>
+              Ár: <b>{dob.price} Ft</b>
             </p>
 
             <p className="card-text">
-              Darabszám: {hangszer.quantity}
+              Darabszám: {dob.quantity}
             </p>
 
           </div>
