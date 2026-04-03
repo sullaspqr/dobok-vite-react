@@ -17,5 +17,4 @@ A React fordító nincs engedélyezve ezen a sablonon a fejlesztési és build t
 ## Az ESLint konfigurációjának kibővítése
 
 Ha éles alkalmazást fejlesztesz, azt javasoljuk, hogy TypeScriptet használj engedélyezett típustudatos lint szabályokkal. A [TS sablonban](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) találsz információkat arról, hogyan integrálhatod a TypeScriptet és a [`typescript-eslint`](https://typescript-eslint.io) a projektedbe.
-
-- NB Kandó 2025-26
+ 2025-26
