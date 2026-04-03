@@ -4,15 +4,15 @@ import axios from 'axios'
 
 export const Single = () => {
     const params = useParams();
-    const id = params.hangszerId;
-    const [hangszer, setHangszer] = useState([]);
+    const id = params.dobId;
+    const [dob, setDob] = useState([]);
     const [isPending, setPending] = useState(false);
 
     useEffect(() => {
         setPending(true);
-        axios.get(`http://localhost:3001/instruments/${id}`)
+        axios.get(`http://localhost:3001/drums/${id}`)
         .then(response => {
-            setHangszer(response.data);
+            setDob(response.data);
             setPending(false);
         })
         .catch(error => {
@@ -25,13 +25,13 @@ export const Single = () => {
 
     return (
      <div className="p-5 m-auto text-center content bg-ivory">
-        {isPending || !hangszer.id ? (
+        {isPending || !dob.id ? (
             <div className="spinner-border"></div>
         ) : (
             <div className="container"> {/* Bootstrap középre igazított tartalom, fix szélességi töréspontokkal */}
 
   <h2 className="mb-4"> {/* mb-4 = margin-bottom 4 egység (kb 1.5rem) */}
-    Hangszer
+    Dob
   </h2>
 
   <div className="row g-4 justify-content-center"> 
@@ -40,31 +40,23 @@ export const Single = () => {
         
         <div className="card shadow-lg">
 
-        <NavLink to={"/"}>
-          <img
-            src={hangszer.imageURL}
-            className="card-img-top p-4"
-            alt="hangszer"
-            style={{ height: "400px", objectFit: "contain" }}
-          /></NavLink>
-
            <div className="card-body text-center">
             {/* card-body = kártya tartalom része, automatikus padding */}
 
             <h5 className="card-title mb-3">
-              {hangszer.name}
+              {dob.name}
             </h5>
           
             <p className="card-text fs-5">
-              Márka: <b>{hangszer.brand}</b>
+              Márka: <b>{dob.brand}</b>
             </p>
             
             <p className="card-text fs-5">
-              Ár: <b>{hangszer.price} Ft</b>
+              Ár: <b>{dob.price} Ft</b>
             </p>
 
             <p className="card-text fs-5">
-              Darabszám: {hangszer.quantity}
+              Darabszám: {dob.quantity}
             </p>
 
           </div>
