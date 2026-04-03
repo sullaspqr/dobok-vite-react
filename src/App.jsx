@@ -19,7 +19,7 @@ export const App = () => {
             </li>
             <li className="nav-item">
               <NavLink to={'/new'} className={({isActive}) => "nav-link" + (isActive ? ' active' : '')}>
-              <span className="nav-link">Új hangszer</span></NavLink>
+              <span className="nav-link">Új dob</span></NavLink>
             </li>
           </ul>
         </div>
@@ -27,7 +27,7 @@ export const App = () => {
        <Routes>
          <Route path="/" element={<List />} />
          <Route path="/new" element={<New />} />
-         <Route path="/single/:hangszerId" element={<Single />} />
+         <Route path="/single/:dobId" element={<Single />} />
        </Routes>
     </Router>
      
